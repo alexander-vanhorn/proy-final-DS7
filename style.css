@@ -1,0 +1,41 @@
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url("ciudad-de-panama.jpg");
+    background-color: #cccccc;
+    background-size: cover;
+    background-repeat: no-repeat;  
+}
+
+.logo-utp{
+    padding-left: 155px;
+    padding-top: 50px;
+    width: 17%;
+    height: 17%;
+}
+
+.titulo-incial{
+    width: 70%;
+    
+}
+
+.titulo-1{
+    color: yellowgreen;
+    padding-left: 160px;
+    padding-top: 50px;
+    padding-right: 160px;
+}
+
+.subtitulo-1{
+    color: #cccccc;
+    padding-left: 160px;
+    padding-right: 160px;
+}
+
+footer{
+    background-color: #cccccc;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+}
+
+
+
