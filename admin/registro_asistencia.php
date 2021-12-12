@@ -1,3 +1,14 @@
+<?php
+    include('config/conexion.php');
+    /*
+    include("../php/verificar.php");
+    include("../php/consultaUser.php");
+
+    /*if ($dataUser->nivel!=1){
+        header("Location: panel.php");
+    }*/
+    
+?>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
