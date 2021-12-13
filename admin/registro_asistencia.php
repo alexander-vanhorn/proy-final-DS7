@@ -29,15 +29,24 @@
     <title>Registro de Asistencia</title>
 
     <script>
+        window.onload = function() {
+            inicio()
+        };
+        function inicio() {
+            var msg=document.getElementById("error");
+            msg.style.display="none";
+        }
         function comprobarParticipante(){
             var nomblist = <?php echo $json_arrayNom; ?>, idList =<?php echo $json_arrayId; ?>,
-            nombC = document.formularioC.Nombre.value, idC = document.formularioC.CODI.value;
+            nombC = document.formularioC.Nombre.value, idC = document.formularioC.CODI.value, msg=document.getElementById("error");
             
             for (let i = 0; i < nomblist.length; i++){
                 if (nombC==nomblist[i] && idC== idList[i]){
+                    msg.style.display="none";
                     return true;
                 }
             }
+            msg.style.display="block";
             return false;
         }
     </script>
@@ -64,7 +73,12 @@
                             }
                             echo '</select>';
                         ?>
-                        <br>
+                    </div>
+                    <div class="form-group" id="user-group">
+                        <p id = "error" name="error" style= none>Error en los datos insertados.</p>
+                        <input type="hidden" class="form-control" id = "aux" placeholder="aux" name="aux"/>
+                    </div>
+                    <br>
                     <button type="submit" class="btn btn-lg btn-primary btn-block" onClick="comprobarClave()" ><i class="fas fa-sign-in-alt"></i> Ingresar Asistencia</button>
                 </form>
         </div>
