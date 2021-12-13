@@ -12,7 +12,8 @@
         
         try{
             $insercion->execute((array)$datos);
-            header("Location: ../Index.php");
+            $msg="Asistencia registrada exitosamente.";
+            echo '<meta http-equiv="refresh" content="0; url=../admin/registro_asistencia.php?msg=1">';
         }catch (PDOexception $e){
             echo "Error: ".$e->getMessage();
         }
