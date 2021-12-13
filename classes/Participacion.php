@@ -4,8 +4,8 @@
         public $conId;
 
         function __construct($p,$c){
-            $this->parId = $n;
-            $this->conId = $a;
+            $this->parId = $p;
+            $this->conId = $c;
         }
     }
 ?>

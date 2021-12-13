@@ -1,13 +1,17 @@
 <?php
-    include('config/conexion.php');
-    /*
-    include("../php/verificar.php");
-    include("../php/consultaUser.php");
-
-    /*if ($dataUser->nivel!=1){
-        header("Location: panel.php");
-    }*/
+    include('../config/conexion.php');
+    $consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
     
+
+    //put all of the resulting names into a PHP array
+    $nombre_array = Array();
+    $id_array = Array();
+    while ($row = $consultaParticipantes->fetch(PDO::FETCH_ASSOC)) {
+        $nombre_array[] =$row['nombre'];
+        $id_array[] =$row['part_id'];
+    }
+    $json_arrayNom = json_encode($nombre_array);
+    $json_arrayId = json_encode($id_array);
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -23,36 +27,45 @@
     <!-- Nuestro css-->
     <link rel="stylesheet" type="text/css" href="../css/index.css" th:href="@{/css/index.css}">
     <title>Registro de Asistencia</title>
+
+    <script>
+        function comprobarParticipante(){
+            var nomblist = <?php echo $json_arrayNom; ?>, idList =<?php echo $json_arrayId; ?>,
+            nombC = document.formularioC.Nombre.value, idC = document.formularioC.CODI.value;
+            
+            for (let i = 0; i < nomblist.length; i++){
+                if (nombC==nomblist[i] && idC== idList[i]){
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
 </head>
 <body>
     <div class="modal-dialog text-center">
         <div class="modal-content">
-            <form name="formularioC" class="col-sm-8 main-section" method="GET" action="php/procesarAsistencia.php" >
+            <form name="formularioC" class="col-sm-8 main-section" method="GET" action="../php/procesarAsistencia.php" onSubmit="return comprobarParticipante()">
                 <br>
                     <div class="form-group" id="user-group">
                         <input type="text" class="form-control" placeholder="COD Inscripcion" name="CODI"/>
                     </div>
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Cedula " name="Cedula"/>
+                        <input type="text" class="form-control" placeholder="Nombre " name="Nombre"/>
                     </div>
                     <div class="form-group" id="user-group">
-                        <select class="form-control">
-                            <option value="0">Hola</option>
-                            <option value="1">Hola2</option>
-                        </select>
                         <br>
                         <?php
-                            /*
-                            $consultaNivel = $conn->query("SELECT * FROM `nivel`");
-                            echo '<select class="form-control" id="nivelList" name="nivelList">'; // Open your drop down box
-                            echo '<option value="-1">--Selecciones Nivel--</option>';
-                            while ($row = $consultaNivel->fetch(PDO::FETCH_ASSOC)) {
-                                echo '<option value="'.$row['id_nivel'].'">'.$row['nom_nivel'].'</option>';
+                            $consultaConferencia = $conn->query("SELECT * FROM `conferencias`");
+                            echo '<select class="form-control" id="confList" name="confList">'; // Open your drop down box
+                            echo '<option value="-1">--Selecciones Conferencia--</option>';
+                            while ($row = $consultaConferencia->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<option value="'.$row['conf_id'].'">'.$row['tema'].'</option>';
                             }
                             echo '</select>';
-                            */
                         ?>
-                    <button type="submit" class="btn btn-lg btn-primary btn-block" ><i class="fas fa-sign-in-alt"></i> Ingresar Asistencia</button>
+                        <br>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" onClick="comprobarClave()" ><i class="fas fa-sign-in-alt"></i> Ingresar Asistencia</button>
                 </form>
         </div>
     </div>

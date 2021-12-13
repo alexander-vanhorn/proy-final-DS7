@@ -3,8 +3,8 @@
     include("../classes/Participacion.php");
 
     
-        $parId = $_REQUEST['participante'];
-        $conId = $_REQUEST['conferencia'];
+        $parId = $_REQUEST['CODI'];
+        $conId = $_REQUEST['confList'];
 
         $datos = new Participacion($parId,$conId);
 
