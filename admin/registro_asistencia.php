@@ -34,7 +34,13 @@
         };
         function inicio() {
             var msg=document.getElementById("error");
-            msg.style.display="none";
+            if(1==<?php echo $_GET['msg'] ?>){
+                msg.innerHTML = "Asistencia registrada exitosamente.";
+                msg.style.display="block";
+            }
+            else{
+                msg.style.display="none";
+            }
         }
         function comprobarParticipante(){
             var nomblist = <?php echo $json_arrayNom; ?>, idList =<?php echo $json_arrayId; ?>,
@@ -43,9 +49,11 @@
             for (let i = 0; i < nomblist.length; i++){
                 if (nombC==nomblist[i] && idC== idList[i]){
                     msg.style.display="none";
+                    msg.innerHTML = "Datos insertados con exito.";
                     return true;
                 }
             }
+            msg.innerHTML = "Error en los datos insertados.";
             msg.style.display="block";
             return false;
         }
@@ -75,7 +83,7 @@
                         ?>
                     </div>
                     <div class="form-group" id="user-group">
-                        <p id = "error" name="error" style= none>Error en los datos insertados.</p>
+                        <p id = "error" name="error">asdf</p>
                         <input type="hidden" class="form-control" id = "aux" placeholder="aux" name="aux"/>
                     </div>
                     <br>
