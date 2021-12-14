@@ -144,6 +144,11 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
                     <i class="fas fa-fw fa-table"></i>
                      <span>Agregar Asistencia</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="asistencia.php">
+                    <i class="fas fa-fw fa-table"></i>
+                     <span>Lista Asistencia</span></a>
+            </li>
             <?php }?>
 
             <!-- Nav Item - Tables -->
@@ -234,7 +239,7 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Administracion de Usuarios</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Registrar Asistencia</h1>
                         
                     </div>
 

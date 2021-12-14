@@ -87,6 +87,11 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
                     <i class="fas fa-fw fa-table"></i>
                      <span>Agregar Asistencia</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="asistencia.php">
+                    <i class="fas fa-fw fa-table"></i>
+                     <span>Lista Asistencia</span></a>
+            </li>
             <?php }?>
 
             <!-- Nav Item - Tables -->
