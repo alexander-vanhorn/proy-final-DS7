@@ -36,9 +36,10 @@
    }
    .img_cocoli{
     float: inline-start;
-       margin-right: 2%;
+       margin-right: 1%;
+       margin-left: 5%;
        float: right;
-       max-width: 25%;  
+       max-width: 1%;  
        height:auto;
        border-radius: 5%;
    }
