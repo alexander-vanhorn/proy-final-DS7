@@ -179,7 +179,7 @@
 <section class="bg2">
          <div class="container">
            <div class="img-area">
-             <img src="/imagenes/areas-tematicas.jpg" alt="">
+             <img src="imagenes/areas-tematicas.jpg" alt="">
              <div class="img-text">
                
               <a  href="#" role="button">Areas Tematicas</a>
