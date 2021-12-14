@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2021 a las 08:12:09
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.8
+-- Tiempo de generación: 14-12-2021 a las 09:08:08
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -86,16 +86,8 @@ CREATE TABLE `participantes_conferencias` (
 
 CREATE TABLE `rol_usuario` (
   `id_rol` int(11) NOT NULL,
-  `nombre_rol` varchar(150) NOT NULL
+  `nombre_rol` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `rol_usuario`
---
-
-INSERT INTO `rol_usuario` (`id_rol`, `nombre_rol`) VALUES
-(1, 'Administrador'),
-(2, 'Operativo');
 
 -- --------------------------------------------------------
 
@@ -105,11 +97,11 @@ INSERT INTO `rol_usuario` (`id_rol`, `nombre_rol`) VALUES
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apellido` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `foto` varchar(300) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `apellido` int(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` int(50) NOT NULL,
+  `foto` int(10) NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -181,7 +173,7 @@ ALTER TABLE `participantes_conferencias`
 -- AUTO_INCREMENT de la tabla `rol_usuario`
 --
 ALTER TABLE `rol_usuario`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
