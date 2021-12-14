@@ -26,6 +26,10 @@
 
 <body>
 
+<?php include('navbar.html');?>
+
+<br><br>
+
     <div class="encabezado">
         <img class="logo-utp-color" src="..\imagenes\logo_utp_color.png">  
         <br><br>
@@ -79,7 +83,7 @@
         
         <div class="col-12">
             <br>
-            <button type="submit" class="btn btn-primary" href="..\secciones\confirmacion.php">kbn</button>
+            <button type="submit" class="btn btn-primary" href="..\secciones\confirmacion.php">Registrarse</button>
         </div>
     </form>
 
