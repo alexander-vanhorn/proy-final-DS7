@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2021 a las 06:32:46
+-- Tiempo de generación: 14-12-2021 a las 08:12:09
 -- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 7.3.29
+-- Versión de PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,21 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `congreso_utp`
+-- Base de datos: `congreso`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `administradores`
---
-
-CREATE TABLE `administradores` (
-  `admin_id` int(11) NOT NULL,
-  `correo` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL,
-  `tipo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -46,7 +33,7 @@ CREATE TABLE `conferencias` (
   `fecha_hora` datetime NOT NULL,
   `salon` varchar(255) NOT NULL,
   `facultad` varchar(255) NOT NULL,
-  `expositor` int(11) NOT NULL
+  `expositor` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,15 +78,50 @@ CREATE TABLE `participantes_conferencias` (
   `hora_ingreso` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rol_usuario`
+--
+
+CREATE TABLE `rol_usuario` (
+  `id_rol` int(11) NOT NULL,
+  `nombre_rol` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `rol_usuario`
+--
+
+INSERT INTO `rol_usuario` (`id_rol`, `nombre_rol`) VALUES
+(1, 'Administrador'),
+(2, 'Operativo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `foto` varchar(300) NOT NULL,
+  `id_rol` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `administradores`
+-- Indices de la tabla `conferencias`
 --
-ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`admin_id`);
+ALTER TABLE `conferencias`
+  ADD PRIMARY KEY (`conf_id`);
 
 --
 -- Indices de la tabla `inscripciones`
@@ -120,26 +142,62 @@ ALTER TABLE `participantes_conferencias`
   ADD PRIMARY KEY (`part_conf_id`);
 
 --
+-- Indices de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+  ADD PRIMARY KEY (`id_rol`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `id_rol` (`id_rol`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `administradores`
+-- AUTO_INCREMENT de la tabla `conferencias`
 --
-ALTER TABLE `administradores`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `conferencias`
+  MODIFY `conf_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `participantes`
+-- AUTO_INCREMENT de la tabla `inscripciones`
 --
-ALTER TABLE `participantes`
-  MODIFY `part_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `inscripciones`
+  MODIFY `insc_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `participantes_conferencias`
 --
 ALTER TABLE `participantes_conferencias`
   MODIFY `part_conf_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `rol_usuario`
+--
+ALTER TABLE `rol_usuario`
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol_usuario` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
