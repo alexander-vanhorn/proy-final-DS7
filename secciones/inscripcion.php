@@ -1,23 +1,7 @@
 <?php
-    require '..\config\config.php';
 
 
-    if (!empty($_POST['nombre'])&& !empty($_POST['apellido']) && !empty($_POST['email']) && !empty($_POST['tipo_documento']) && !empty($_POST['no_documento'])  && !empty($_POST['institucion']) && !empty($_POST['rol_participante']) ){
-        $sql = "INSERT INTO participantes (nombre, apellido, correo, tipo_doc, part_id, institucion, rol) values (:nombre, :apellido, :email, :tipo_documento, :no_documento, :institucion, :rol_participante)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nombre',$_POST['nombre']);
-        $stmt->bindParam(':apellido',$_POST['apellido']);
-        $stmt->bindParam(':email',$_POST['email']);
-        $stmt->bindParam(':tipo_documento',$_POST['tipo_documento']);
-        $stmt->bindParam(':no_documento',$_POST['no_documento']);
-        $stmt->bindParam(':institucion',$_POST['institucion']);
-        $stmt->bindParam(':rol_participante',$_POST['rol_participante']);   
-
-
-
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,43 +35,39 @@
     </div>
 
     
-    <form action='..\secciones\inscripcion.php' method='POST' class="row g-2" >
+    <form action='..\php\procesos_inscripcion.php' method='POST' class="row g-2" >
         <div class="row g-2">
             <div class="col">
-                <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-label="Nombre" id="nombre">
             </div>
             <div class="col">
-                <input type="text" name="apellido" class="form-control" placeholder="Apellido" aria-label="Apellido">
+                <input type="text" name="apellido" class="form-control" placeholder="Apellido" aria-label="Apellido" id="nombre">
             </div>
         </div>
 
         <div class="col-md-5">
             <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="inputEmail4">
-        </div>
-
-        <div class="col-md-4">
-            <label for="inputTipoDocmento" class="form-label">Tipo de Documento</label>
-            <select class="form-select" name="tipo_documento" id="specificSizeSelect">
-            <option selected>Escoja una opción...</option>
-            <option value="cedula">Cédula</option>
-            <option value="pasaporte">Pasaporte</option>
-            </select>
+            <input type="email" name="email" class="form-control" id="email">
         </div>
 
         <div class="col-md-3">
-            <label for="inputPassword4" class="form-label">No. de Documento</label>
-            <input type="text" name="no_documento" class="form-control" id="inputPassword4">
+            <label for="inputPassword4" class="form-label">Cédula</label>
+            <input type="text" name="cedula" class="form-control" id="cedula">
+        </div>
+
+        <div class="col-md-3">
+            <label for="inputPassword4" class="form-label">ID Participante</label>
+            <input type="text" name="part_ID" class="form-control" id="part_ID">
         </div>
 
         <div class="col-12">
             <label for="inputAddress" class="form-label">Institución</label>
-            <input type="text" name="institucion" class="form-control" id="inputAddress" placeholder="Ejm. Universidad Tecnológica de Panamá">
+            <input type="text" name="institucion" class="form-control" id="institucion" placeholder="Ejm. Universidad Tecnológica de Panamá">
         </div>
       
         <div class="col-12">
             <label for="inputState" class="form-label">Tipo de participante</label>
-            <select id="inputState" name="rol_participante" class="form-select">
+            <select name="rol_participante" id="rol_participante" class="form-select">
             <option selected>Escoja una opción</option>
             <option value="Estudiante pregrado">Estudiante Pregrado</option>
             <option value="Estudiante postgrado">Estudiante Postgrado</option>
@@ -99,7 +79,7 @@
         
         <div class="col-12">
             <br>
-            <input type="submit" class="btn btn-primary" href="..\secciones\confirmacion.php"></input>
+            <button type="submit" class="btn btn-primary" href="..\secciones\confirmacion.php">kbn</button>
         </div>
     </form>
 

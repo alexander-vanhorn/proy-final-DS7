@@ -18,6 +18,10 @@ $x = 5 + 5;
 
     <!--CSS Externo para modificaciones-->
     <link rel="stylesheet" href="../css/estilosconfirm.css">
+
+    <!--Imagen de la barra de título-->
+    <link rel="shortcut icon" href="..\imagenes\logo_utp_color.png" type="image/x-icon">
+
 </head>
 <body>
     <img src="../imagenes/logo_utp_color.png">
