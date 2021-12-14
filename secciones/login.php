@@ -10,9 +10,9 @@
     <title>Acceder al Sistema - UTP</title>
 
     
-    <link rel="stylesheet"href="./css/signin.css" >
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet"href="../css/signin.css" >
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
     
     <style>
       .bd-placeholder-img {
