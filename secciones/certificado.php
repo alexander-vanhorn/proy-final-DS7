@@ -1,91 +1,90 @@
 <?php
 
 
-//tutorial seguido https://youtu.be/M9oWxiocvjk
-//include("../config/config.php");
-//include('../config/conexion.php');
+    //tutorial seguido https://youtu.be/M9oWxiocvjk
+    //include("../config/config.php");
+    include('../config/conexion.php');
 
-$id_ins=$_POST['idinscripcion'];
-require('fpdf.php');//biblioteca para convertir la imagen en un pdf
-$conn=new mysqli('localhost','estudiante','utp2021','congreso_utp');
-if($conn->connect_error)
-{
-    die("Connection Failed".$conn->connect_error);
-} 
- //$sql="SELECT name from participantes where insc_id=$id_ins"; //esto lo hace por id cambiar a futuro por el que deberia buscar
- //probando
- 
- //$sql="SELECT part_id, nombre, apellido FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id";
- 
- 
+    $id_ins=$_POST['idinscripcion'];
+    require('fpdf.php');//biblioteca para convertir la imagen en un pdf 
+    //$sql="SELECT name from participantes where insc_id=$id_ins"; //esto lo hace por id cambiar a futuro por el que deberia buscar
+    //probando
+    
+    //$sql="SELECT part_id, nombre, apellido FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id";
+    
+    //$sql="SELECT participantes.nombre, participantes.apellido, inscripciones.insc_id FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id WHERE inscripciones.part_id=$id_ins"; 
+    $consultaCertificado =$conn->query("SELECT participantes.nombre, participantes.apellido, inscripciones.insc_id FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id WHERE inscripciones.part_id=$id_ins");
+    //$consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
+    
+    //Se sacan los datos de la bd y se asignan a name
+    while ($row = $consultaCertificado->fetch(PDO::FETCH_ASSOC)) {
+        $name =$row['nombre']." ".$row['apellido'];
+    }
 
-    $sql="SELECT participantes.nombre, participantes.apellido, inscripciones.insc_id FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id WHERE inscripciones.part_id=$id_ins"; 
-
-
-$result=$conn->query($sql);
- if($result->num_rows>0)
-{
-    $row=$result->fetch_assoc();//esto no entiendo bien que hace pero sirve
-     
-        $font="../certificado/arial.ttf";
-        $image = imagecreatefromjpeg("../imagenes/certificate.jpg");
-        $color=imagecolorallocate($image,19,21,21);
-        $name=$row['nombre']." ".$row['apellido'];
-        imagettftext($image, 35, 0, 400, 350, $color, $font, $name);//35 tamaño de letra, 0 angulo,400 y 350 posicion
-        imagejpeg($image,"../certificado/certificado.jpg");
-
+    //$result=$conn->query($sql);
+    if(isset($name))
+    {
+        //$row=$result->fetch_assoc();//esto no entiendo bien que hace pero sirve
         
-        //convirtiendo imagen del certificado creado en pdf
-        $pdf=new FPDF('L','in',[11.7,8.27]);
-        $pdf->addpage();
-        $pdf->image("../certificado/certificado.jpg",0,0,11.7,8.27);
-        $pdf->Output("../certificado/certificado.pdf","F");
-       
+            $font="../certificado/arial.ttf";
+            $image = imagecreatefromjpeg("../imagenes/certificate.jpg");
+            $color=imagecolorallocate($image,19,21,21);
+            //$name=$row['nombre']." ".$row['apellido'];
+            imagettftext($image, 35, 0, 400, 350, $color, $font, $name);//35 tamaño de letra, 0 angulo,400 y 350 posicion
+            imagejpeg($image,"../certificado/certificado.jpg");
 
-
-        //echo "Certificate Created";  
-       // echo "id =",$id_ins;   
-        //imagedestroy($image);
-
-       // mostrando certificado
-       header('content-type:application/pdf');
-        readfile('../certificado/certificado.pdf');
-     
-
-}else 
-{ //pagina de error que se muestra si el usuario trató de meter una id de inscripcion que no existe
-
-  
-        ?>
-
+            
+            //convirtiendo imagen del certificado creado en pdf
+            $pdf=new FPDF('L','in',[11.7,8.27]);
+            $pdf->addpage();
+            $pdf->image("../certificado/certificado.jpg",0,0,11.7,8.27);
+            $pdf->Output("../certificado/certificado.pdf","F");
         
-            <br>
-            <br>
-           
-
-            <center>
-            <div > <img class="img_error" width="5%" height="auto" src="../imagenes/error.png"><h1>Error</h1></div>
-            <h4>¡Vaya! Parece que has metido una id de inscripción erronea.
-            <br>
-            Cualquier reclamo por favor contactenos a correodeturno@gmail.com
-            </h4>
-            </center>
 
 
-        <?php
+            //echo "Certificate Created";  
+        // echo "id =",$id_ins;   
+            //imagedestroy($image);
+
+        // mostrando certificado
+        header('content-type:application/pdf');
+            readfile('../certificado/certificado.pdf');
+        
+
+    }else 
+    { //pagina de error que se muestra si el usuario trató de meter una id de inscripcion que no existe
+
+    
+            ?>
+
+            
+                <br>
+                <br>
+            
+
+                <center>
+                <div > <img class="img_error" width="5%" height="auto" src="../imagenes/error.png"><h1>Error</h1></div>
+                <h4>¡Vaya! Parece que has metido una id de inscripción erronea.
+                <br>
+                Cualquier reclamo por favor contactenos a correodeturno@gmail.com
+                </h4>
+                </center>
 
 
-}
+            <?php
+
+
+    }
 
 
 
-if(extension_loaded('gd')&&function_exists('gd_info'))
-{
-    //echo "GD installed";
-} else{ echo"Hola parece que tienes gd desactivado asi que entra aqui https://youtu.be/IuQMKMtMLuU?t=129";
-}
+    if(extension_loaded('gd')&&function_exists('gd_info'))
+    {
+        //echo "GD installed";
+    } else{ echo"Hola parece que tienes gd desactivado asi que entra aqui https://youtu.be/IuQMKMtMLuU?t=129";
+    }
 
 
-  
+    
 
 ?>
