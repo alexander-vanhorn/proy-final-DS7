@@ -13,10 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!--Imagen de la barra de título-->
-    <link rel="shortcut icon" href="imagenes\logo_utp_color.png" type="image/x-icon">
+    <link rel="shortcut icon" href="..\imagenes\logo_utp_color.png" type="image/x-icon">
 
     <!--CSS Externo para modificaciones-->
-    <link rel="stylesheet" href="css\estilos-inscripcion.css">
+    <link rel="stylesheet" href="../css/estilos-inscripcion.css">
     
 </head>
 
@@ -30,7 +30,7 @@
     
 
     <div class="encabezado">
-        <img class="logo-utp-color" src="imagenes\logo_utp_color.png">  
+        <img class="logo-utp-color" src="..\imagenes\logo_utp_color.png">  
         <br><br>
         <h3>VIII Congreso IESTEC UTP 2022</h3>
         <h5>Formulario de inscripción</h5>
