@@ -61,7 +61,7 @@
     
     
     <button class="btn btn-lg btn-light btn-block border border-primary" type="submit">Acceder</button>
-    ¿Aun no tiene cuenta?  <a href="crearUsuario.php" class="ml-2"> Registrese aqui</a>
+    
 
     
     
