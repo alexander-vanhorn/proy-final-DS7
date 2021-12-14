@@ -64,7 +64,7 @@
      
 
     
-   
+    ¿Aun no tiene cuenta?  <a href="secciones/crearUsuario.php" class="ml-2"> Registrese aqui</a>
     <p class="mt-5 mb-3 text-muted">&copy;Grupo 3 1LS-132</p>
 
 
