@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -38,7 +39,7 @@ include("../config/conexion.php");
 
 else{
     echo"NO ESTA DEFINIDO";
-    echo'<meta http-equiv="refresh" content="0; url=../index.php>';
+    echo'<meta http-equiv="refresh" content="0; url=../secciones/login.php>';
 }
 
 ?>
