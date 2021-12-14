@@ -47,7 +47,7 @@
                   <a class="nav-link" href="index.php">Inicio <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Inscripcion</a>
+                  <a class="nav-link" href="secciones\inscripcion.php">Inscripcion</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="secciones/giras_tecnicas.php">Giras tecnicas</a>
@@ -73,8 +73,7 @@
     </button> 
         </a>
     </center>
-        <br><br><br>
-        <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <footer>
           <br><br>
           @2021 Universidad Tecnologica de Panama | All rights reserved | Powered by UTP
