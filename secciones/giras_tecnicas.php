@@ -24,7 +24,7 @@
             </div>
                 
 <img class=img_aguasclaras src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpbs.twimg.com%2Fmedia%2FCi1rauJXIAABgz-.jpg&f=1&nofb=1">
-<img class=img_cocoli src="https://elcapitalfinanciero.com/wp-content/uploads/2016/06/esclusa-Pacifico-Cocoli-poblado-sector_LPRIMA20160330_0039_26-300x169.jpg">
+<img class=img_cocoli src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flagacetadepanama.com%2Fwp-content%2Fuploads%2F2019%2F08%2FTercer-Puente-sobre-el-Canal.jpg&f=1&nofb=1">
 
 
             08:30 am El bus recogerá a los pasajeros en el hotel de Wyndham más Panamá Albrook Mall
