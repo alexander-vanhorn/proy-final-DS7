@@ -2,24 +2,35 @@
 
 
 //tutorial seguido https://youtu.be/M9oWxiocvjk
+//include("../config/config.php");
+//include('../config/conexion.php');
 
 $id_ins=$_POST['idinscripcion'];
 require('fpdf.php');//biblioteca para convertir la imagen en un pdf
-$conn=new mysqli('localhost','root','','youtube');
+$conn=new mysqli('localhost','estudiante','utp2021','congreso_utp');
 if($conn->connect_error)
 {
     die("Connection Failed".$conn->connect_error);
 } 
- $sql="SELECT name from certificate where id=$id_ins"; //esto lo hace por id cambiar a futuro por el que deberia buscar
-    $result=$conn->query($sql);
-if($result->num_rows>0)
+ //$sql="SELECT name from participantes where insc_id=$id_ins"; //esto lo hace por id cambiar a futuro por el que deberia buscar
+ //probando
+ 
+ //$sql="SELECT part_id, nombre, apellido FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id";
+ 
+ 
+
+    $sql="SELECT participantes.nombre, participantes.apellido, inscripciones.insc_id FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id WHERE inscripciones.part_id=$id_ins"; 
+
+
+$result=$conn->query($sql);
+ if($result->num_rows>0)
 {
     $row=$result->fetch_assoc();//esto no entiendo bien que hace pero sirve
      
         $font="../certificado/arial.ttf";
         $image = imagecreatefromjpeg("../imagenes/certificate.jpg");
         $color=imagecolorallocate($image,19,21,21);
-        $name=$row['name'];
+        $name=$row['nombre']." ".$row['apellido'];
         imagettftext($image, 35, 0, 400, 350, $color, $font, $name);//35 tamaño de letra, 0 angulo,400 y 350 posicion
         imagejpeg($image,"../certificado/certificado.jpg");
 
@@ -41,10 +52,10 @@ if($result->num_rows>0)
         readfile('../certificado/certificado.pdf');
      
 
-} else
+}else 
 { //pagina de error que se muestra si el usuario trató de meter una id de inscripcion que no existe
 
-   
+  
         ?>
 
         
