@@ -59,11 +59,6 @@
             <input type="text" name="cedula" class="form-control" id="cedula">
         </div>
 
-        <div class="col-md-3">
-            <label for="inputPassword4" class="form-label">ID Participante</label>
-            <input type="text" name="part_ID" class="form-control" id="part_ID">
-        </div>
-
         <div class="col-12">
             <label for="inputAddress" class="form-label">Institución</label>
             <input type="text" name="institucion" class="form-control" id="institucion" placeholder="Ejm. Universidad Tecnológica de Panamá">
