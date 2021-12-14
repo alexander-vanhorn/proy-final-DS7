@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2021 a las 09:08:08
+-- Tiempo de generación: 14-12-2021 a las 09:14:22
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -89,6 +89,14 @@ CREATE TABLE `rol_usuario` (
   `nombre_rol` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `rol_usuario`
+--
+
+INSERT INTO `rol_usuario` (`id_rol`, `nombre_rol`) VALUES
+(1, 'Administrador'),
+(2, 'Operativo');
+
 -- --------------------------------------------------------
 
 --
@@ -173,7 +181,7 @@ ALTER TABLE `participantes_conferencias`
 -- AUTO_INCREMENT de la tabla `rol_usuario`
 --
 ALTER TABLE `rol_usuario`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
