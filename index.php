@@ -34,38 +34,52 @@
         // You can also use comments to leave out parts of a code line
         $x = 5 + 5;
         ?>
-       <!--<img class ="logo-utp" src="imagenes\logo_utp_web.png">-->
-       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img class="logo-utp" src="imagenes/logo_utp_web.png" alt="" width="50" height="50">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#areas-interes">Áreas de interés</a>
+       <!-- navbar-->
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+            <a class="navbar-brand" href="index.php"> <img height="50px" width="auto" src="imagenes/logo_utp_blanco.png"> Congreso UTP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.php">Inicio <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Inscripcion</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="secciones/giras_tecnicas.php">Giras tecnicas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="secciones/areas_de_interes.php">Areas de interes</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="secciones/expositores.php">Expositores</a>
-                    <a class="nav-link">Otros</a>
-
-                    &emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-
-                    <a class="btn btn-success" href="secciones/inscripcion.php" role="button">Registrarse</a>
-                </div>
-                </div>
+                  </li>
+               
+              </ul>
             </div>
-            </nav>
+          </nav>
 
         <h1 class="titulo-1">VII Congreso Internacional de Ingeniería, Ciencias y Tecnología</h1>
         <h3 class="subtitulo-1">Ciencias, Tecnología, Sostenibilidad e Inovación: Pilares para la recuperación económica.</h3>
-        <?php include 'secciones/certificado.html'; ?>
+        <center>
+        <br><br><br><br>
+        <a href="secciones/certificado.html">
+    <button type="button" class="btn btn-success" data-toggle="modal">
+  <b>Solicitar certificado</b>
+    </button> 
+        </a>
+    </center>
         <br><br><br>
+        <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <footer>
+          <br><br>
+          @2021 Universidad Tecnologica de Panama | All rights reserved | Powered by UTP
+          <br><br><br>
+      </footer> 
     </div>
        
   
