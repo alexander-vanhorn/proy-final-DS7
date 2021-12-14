@@ -1,6 +1,25 @@
 <?php
 include("../php/verificar.php");
 include("../php/consultaUser.php");
+
+
+if ($datoUser->id_rol!=1){
+    header('Location : panel.php');
+}
+    $consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
+    
+
+    //put all of the resulting names into a PHP array
+    $nombre_array = Array();
+    $id_array = Array();
+    while ($row = $consultaParticipantes->fetch(PDO::FETCH_ASSOC)) {
+        $nombre_array[] =$row['nombre'];
+        $id_array[] =$row['part_id'];
+    }
+    $json_arrayNom = json_encode($nombre_array);
+    $json_arrayId = json_encode($id_array);
+$consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido, usuario.email, rol_usuario.nombre_rol FROM usuario INNER JOIN rol_usuario ON usuario.id_rol=rol_usuario.id_rol;"); 
+
 ?>
 
 
@@ -9,13 +28,24 @@ include("../php/consultaUser.php");
 
 <head>
 
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="../css/index.css" th:href="@{/css/index.css}">
+    <title>Registro de Asistencia</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Panel de Administracion</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +55,42 @@ include("../php/consultaUser.php");
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script>
+        window.onload = function() {
+            inicio()
+        };
+        function inicio() {
+            var msg=document.getElementById("error");
+            if(1==<?php echo $_GET['msg'] ?>){
+                msg.innerHTML = "Asistencia registrada exitosamente.";
+                msg.style.display="block";
+            }
+            else if(2==<?php echo $_GET['msg'] ?>){
+                msg.innerHTML = "Rellene todos los campos";
+                msg.style.display="block";
+            }
+            else{
+                msg.style.display="none";
+            }
+        }
+        function comprobarParticipante(){
+            var nomblist = <?php echo $json_arrayNom; ?>, idList =<?php echo $json_arrayId; ?>,
+            nombC = document.formularioC.Nombre.value, idC = document.formularioC.CODI.value, msg=document.getElementById("error");
+            
+            for (let i = 0; i < nomblist.length; i++){
+                if (nombC==nomblist[i] && idC== idList[i]){
+                    msg.style.display="none";
+                    msg.innerHTML = "Datos insertados con exito.";
+                    return true;
+                }
+            }
+            msg.innerHTML = "Error en los datos insertados, verifique los campos.";
+            msg.style.display="block";
+            return false;
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -39,11 +104,9 @@ include("../php/consultaUser.php");
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="panel.php">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <img src="../imagenes/logo_utp.svg" alt="" height="50" width="50">
+                    <img src="../imagenes/logo_utp.svg" alt="" width="50" height="50">
                 </div>
-                <div class="sidebar-brand-text mx-3">Congreso UTP
-
-                </div>
+                <div class="sidebar-brand-text mx-3">UTP Congreso</div>
             </a>
 
             <!-- Divider -->
@@ -74,7 +137,7 @@ include("../php/consultaUser.php");
             <li class="nav-item">
                 <a class="nav-link" href="lista.php">
                     <i class="fas fa-fw fa-table"></i>
-                     <span>Lista de Usuarios</span></a>
+                    <span>Lista de Usuarios</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="registroAsistencia.php">
@@ -128,8 +191,9 @@ include("../php/consultaUser.php");
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-                           
-                        <div class="topbar-divider d-none d-sm-block"></div>
+                            
+
+                        
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -164,21 +228,61 @@ include("../php/consultaUser.php");
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Bienvenido al Sistema de Administracion</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                   
+                     <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Administracion de Usuarios</h1>
+                        
                     </div>
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Agregar Asistencia</h6>
+    </div>
+    <div class="card-body">
+    <div class="modal-content">
+            <form name="formularioC" class="col-sm-8 main-section" method="GET" action="../php/procesarAsistencia.php" onSubmit="return comprobarParticipante()">
+                <br>
+                    <div class="form-group" id="user-group">
+                        <input type="text" class="form-control" placeholder="COD Inscripcion" name="CODI"/>
+                    </div>
+                    <div class="form-group" id="user-group">
+                        <input type="text" class="form-control" placeholder="Nombre " name="Nombre"/>
+                    </div>
+                    <div class="form-group" id="user-group">
+                        <br>
+                        <?php
+                            $consultaConferencia = $conn->query("SELECT * FROM `conferencias`");
+                            echo '<select class="form-control" id="confList" name="confList">'; // Open your drop down box
+                            echo '<option value="-1">--Selecciones Conferencia--</option>';
+                            while ($row = $consultaConferencia->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<option value="'.$row['conf_id'].'">'.$row['tema'].'</option>';
+                            }
+                            echo '</select>';
+                        ?>
+                    </div>
+                    <div class="form-group" id="user-group">
+                        <p id = "error" name="error"></p>
+                        <input type="hidden" class="form-control" id = "aux" placeholder="aux" name="aux"/>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block" onClick="comprobarClave()" ><i class="fas fa-sign-in-alt"></i> Ingresar Asistencia</button>
+                    <br>
+                </form>
+        </div>
+    </div>
+</div>
+
+</div>
 
                     
 
-                   
-                   
-                            
-
-                         
-                </div>
+                    
                 <!-- /.container-fluid -->
 
             </div>
@@ -188,7 +292,7 @@ include("../php/consultaUser.php");
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Grupo 3 1LS-132</span>
+                        <span>Copyright &copy; Grupo 3 1LS-132 </span>
                     </div>
                 </div>
             </footer>
@@ -210,7 +314,7 @@ include("../php/consultaUser.php");
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualizar perfil</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesion?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -261,7 +365,7 @@ include("../php/consultaUser.php");
                     </button>
                 </div>
 
-                <div class="modal-body">Seleccione "Salir" si desea finalizar con la sesion actual.</div>
+                <div class="modal-body">Seleccione "Salir" si desea finalizar con la sesion actual .</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="../php/salir.php">Salir</a>
@@ -286,6 +390,13 @@ include("../php/consultaUser.php");
     <!-- Page level custom scripts -->
     <script src="../js/demo/chart-area-demo.js"></script>
     <script src="../js/demo/chart-pie-demo.js"></script>
+
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
+
 
 </body>
 

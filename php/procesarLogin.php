@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -9,6 +10,7 @@ include("../config/conexion.php");
  {
 
     $email =$_REQUEST['email'];
+    //$pass = $_REQUEST['password'];
     $pass = md5($_REQUEST['password']);
 
     $consulta=$conn->query("SELECT id FROM usuario WHERE email='$email' and password = '$pass'");
@@ -38,7 +40,7 @@ include("../config/conexion.php");
 
 else{
     echo"NO ESTA DEFINIDO";
-    echo'<meta http-equiv="refresh" content="0; url=../index.php>';
+    echo'<meta http-equiv="refresh" content="0; url=../secciones/login.php>';
 }
 
 ?>
