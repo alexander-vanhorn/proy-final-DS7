@@ -8,13 +8,13 @@
 }
 .titulo-texto{
     font-weight: bold;
-    color:#ae49c2;
+    color:#5a4f99;
     font-size: 25px;
     
 }
 .subtitulo-texto{
     font-weight: bold;
-    color:#ae49c2;
+    color:#5a4f99;
     font-size: 20px;
     
 }
@@ -41,4 +41,16 @@
        max-width: 25%;  
        height:auto;
        border-radius: 5%;
+   }
+
+   .expositores{
+       background-color: #ececec;
+   }
+
+   .giras{
+    background-color: #ececec;   
+   }
+
+   .areas-interes{
+       background-color: #ececec;
    }
