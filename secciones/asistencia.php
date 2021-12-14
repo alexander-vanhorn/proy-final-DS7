@@ -211,7 +211,6 @@ $asistencia=0;
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Email</th>
-                        <th>Rol</th>
                         <th>Asistencia</th>
                        
                     </tr>
@@ -225,7 +224,6 @@ $asistencia=0;
                         <td><?php echo $detalleUsuario->nombre; ?></td>
                         <td><?php echo $detalleUsuario->apellido; ?></td>
                         <td><?php echo $detalleUsuario->correo; ?></td>
-                        <td><?php echo $detalleUsuario->rol; ?> </td>
                         <td><?php  $asistencia=0; $consultaParticipantes_conf = $conn->query("SELECT * FROM participantes_conferencias WHERE part_id=$detalleUsuario->part_id");
            
        
