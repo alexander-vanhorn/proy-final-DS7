@@ -23,7 +23,7 @@
     <title>VIII Congreso IESTEC UTP</title>
 
     <!--Imagen de la barra de título-->
-    <link rel="shortcut icon" href="C:\xampp\htdocs\Prueba proyecto final DS7\images\logo_utp_1_72.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logo_utp_1_72.png" type="image/x-icon">
 </head>
 
 <body>
