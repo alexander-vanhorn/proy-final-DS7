@@ -1,67 +1,44 @@
-
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="~/Scripts/jquery-2.2.1.min.js"></script>    
-<script src="~/Scripts/bootstrap.min.js"></script>
-
-        <title>Iniciar sesion</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Solicitar certificado</title>
     </head>
     <body>
+   
+    
+        <center>
+          <br> <br> <br><br><br><br><br>
 
- 
-<!-- Button trigger modal -->
-<center>
-  <br><br>
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-  Solicitar certificado
-</button>
-</center>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Descargar certificado</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <!-- form del certificado-->
-
-        <form name="formulario"method="POST" action="secciones/certificado.php">                     
+            <div class="card"  style="width: 25rem; " >
+                <div class="card-body">
+                    <form method="post" action="certificado.php">                     
                         
-           Id de inscripción
-           
-          <input name="idinscripcion"  alling="center" id="idinscripcion" class="form-control" required> 
-           <br>                                           
-          <center>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" >Solicitar certificado</button>
-          
-          
-          </div>
-          </center>
+                      
+                        <div class="form-group">
+
+                          <img width="35%" height="auto" src="../imagenes/certificado_icono.png">
+                          <br>   <br> 
+                          <label >Ingrese el ID del inscripcion</label>
+                          <br> <br>  
+                            <input name="idinscripcion"  id="idinscripcion" class="form-control"  placeholder="Ingrese su ID de inscripcion" required>
+                        </div>
                        
-        </form>
+                                             
 
-
-
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-<!-- scripts necesarios para que la ventana modal se ejecute-->
-<script type="text/javascript" src="js/jquery-3.2.1.slim.min.js"></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+                    
+                        <button type="submit" class="btn btn-primary">Acceder</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </center>
+ <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <footer>
+          <br><br>
+          @2021 Universidad Tecnologica de Panama | All rights reserved | Powered by UTP
+          <br><br><br>
+      </footer> 
     </body>
-
 </html>
-
