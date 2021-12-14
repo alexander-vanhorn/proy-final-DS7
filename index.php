@@ -40,7 +40,34 @@
         // You can also use comments to leave out parts of a code line
         $x = 5 + 5;
         ?>
-        <img class ="logo-utp" src="imagenes\logo_utp_web.png">
+       <!--<img class ="logo-utp" src="imagenes\logo_utp_web.png">-->
+       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img class="logo-utp" src="imagenes/logo_utp_web.png" alt="" width="50" height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#areas-interes">Áreas de interés</a>
+                    <a class="nav-link" href="secciones/expositores.php">Expositores</a>
+                    <a class="nav-link disabled">Disabled</a>
+
+                    &emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+                    <a class="btn btn-success" href="secciones/inscripcion.php" role="button">Registrarse</a>
+                </div>
+                </div>
+            </div>
+            </nav>
+
         <h1 class="titulo-1">VII Congreso Internacional de Ingeniería, Ciencias y Tecnología</h1>
         <h3 class="subtitulo-1">Ciencias, Tecnología, Sostenibilidad e Inovación: Pilares para la recuperación económica.</h3>
         <?php include 'secciones/certificado.html'; ?>
@@ -84,7 +111,7 @@
 
 
 
-<div class="areas-interes">    
+<div class="areas-interes" id="areas-interes">    
     <br>
     <br>    
     <h4 ><center> <b>Áreas de Interés</b></center></h4>
