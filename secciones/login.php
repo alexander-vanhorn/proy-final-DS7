@@ -40,7 +40,7 @@
 
 
   <form class="form-signin" method="POST" action="../php/procesarLogin.php">
-    <img class="mb-4" src="../images/logo_utp.png" alt="" width="100" height="100">
+    <img class="mb-4" src="../imagenes/logo_utp.png" alt="" width="100" height="100">
     <h1 class="h3 mb-3 fw-normal">Acceder al Sistema</h1>
 
     <p class="text-danger"> <?php if (isset($_GET['msg'])) echo $_GET['msg'];?>  </p>
