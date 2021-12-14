@@ -201,6 +201,20 @@
         
 
 
+<<<<<<< Updated upstream
+=======
+    <h1 class="titulo-1">VII Congreso Internacional de Ingeniería, Ciencias y Tecnología</h1>
+    <h3 class="subtitulo-1">Ciencias, Tecnología, Sostenibilidad e Inovación: Pilares para la recuperación económica.</h3>
+    <center>
+        <br><br><br><br>
+        <a href="secciones/certificado.html">
+    <button type="button" class="btn btn-success" data-toggle="modal">
+  <b>Solicitar certificado</b>
+    </button> 
+        </a>
+    </center>
+   
+>>>>>>> Stashed changes
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <footer>
     <br><br>

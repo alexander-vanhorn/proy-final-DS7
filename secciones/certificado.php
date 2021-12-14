@@ -8,24 +8,37 @@
     $id_ins=$_POST['idinscripcion'];
     require('fpdf.php');//biblioteca para convertir la imagen en un pdf 
     $asistencia=0;
+    $error=0;
     //consulta es un inner join que consulta la tabla participantes e incripciones en donde el id_inscripcion sea igual al idinscripcion del metodo post
     $consultaCertificado =$conn->query("SELECT participantes.nombre, participantes.part_id, participantes.apellido, inscripciones.insc_id FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id WHERE inscripciones.insc_id=$id_ins");
     //$consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
     
-    //Se sacan los datos de la bd y se asignan a name para colocarlo en la imagen del certificado
+   
+    try {
+        //Se sacan los datos de la bd y se asignan a name para colocarlo en la imagen del certificado
     while ($row = $consultaCertificado->fetch(PDO::FETCH_ASSOC)) {
         $name =$row['nombre']." ".$row['apellido'];
         $parins_id=$row['part_id'];
+        $consultaParticipantes_conf = $conn->query("SELECT * FROM participantes_conferencias WHERE part_id=$parins_id");
            
-    }
-    $consultaParticipantes_conf = $conn->query("SELECT * FROM participantes_conferencias WHERE part_id=$parins_id");
-
-     
-    while($row=$consultaParticipantes_conf  ->fetch(PDO::FETCH_OBJ)){ 
-     $asistencia++;
        
-    
+        while($row=$consultaParticipantes_conf  ->fetch(PDO::FETCH_OBJ)){ 
+            $asistencia++;
+              
+           
+           }
+    } 
+
+    } catch (PDOException $e) { 
+        $error++;
+             
     }
+
+
+    
+    
+    
+  
 
 
     //$result=$conn->query($sql);
@@ -58,7 +71,7 @@
             readfile('../certificado/certificado.pdf');
         
 
-    }elseif($asistencia<3){
+    }elseif($asistencia<3&& $error=0){
         
         ?>
 
@@ -93,7 +106,7 @@
 
                 <center>
                 <div > <img class="img_error" width="5%" height="auto" src="../imagenes/error.png"><h1>Error</h1></div>
-                <h4>¡Vaya! Parece que has metido una id de inscripción erronea.
+                <h4>¡Vaya! Parece que has metido una id de inscripción erronea o no cumples los requisitos.
                 <br>
                 Cualquier reclamo por favor contactenos a correodeturno@gmail.com
                 </h4>
