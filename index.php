@@ -199,26 +199,15 @@
                 <br>8:00am a 10:00am —Visita a las Esclusas de Cocolí
                 <br>10:30am — Retorno al hotel Wyndham Panamá Albrook Mall
             </div >
+            <br><br>
 </div>        
         
-
-
-<<<<<<< HEAD
-    <h1 class="titulo-1">VII Congreso Internacional de Ingeniería, Ciencias y Tecnología</h1>
-    <h3 class="subtitulo-1">Ciencias, Tecnología, Sostenibilidad e Inovación: Pilares para la recuperación económica.</h3>
-    <?php include 'secciones/certificado.html'; ?>
-
-
-
-
-
-
 
 
     <section class="bg p-5">
         <div class="container">
 
-          <h2 class="header-lugar">LUGAR DEL EVENTO</h2>
+          <h2 class="header-lugar">Lugar del evento</h2>
           <h4 class="header-wyndham">Wyndham Panama Albrook Mall Hotel & Convention Center</h4>
           <p class="ubicacion">Albrook Mall, Ancon, Panama City, Panama</p>
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -253,7 +242,7 @@
 
 
 
-          <h2 class="header-hospedaje">HOSPEDAJE</h2>
+          <h2 class="header-hospedaje">Hospedaje</h2>
           <div class="card-group">
                 <div class="card crdimg1">
                   
@@ -370,9 +359,6 @@
 <script src="./js/bootstrap.min.js">  </script>
 
 
-
-=======
->>>>>>> 634fd2d18975d533f24de34bc72fab0c21b505b2
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <footer>
     <br><br>

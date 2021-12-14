@@ -30,7 +30,6 @@
   text-align: center;
   margin-top: 30px;
   margin-bottom: 20px;
-  color: white;
 }
 
 .header-wyndham{
@@ -40,14 +39,12 @@
   border-left: none;
   border-right: none;
   border-top: none;
-  color: white;
+  
   
   border-bottom-color: white;
   
 }
-.ubicacion{
-  color:white;
-}
+
 
 .crdimg1{
   border: none;
