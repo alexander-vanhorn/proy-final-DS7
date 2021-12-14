@@ -5,3 +5,164 @@
   
 }
 
+
+
+.card{
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  
+}
+
+.bg{
+  background-image: url(/imganes/fondo-lugar.jpg);
+}
+
+.bg2{
+  background-color: white;
+}
+.container{
+   
+  margin-top: 30px;
+}
+
+.header-lugar,.header-hospedaje{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.header-wyndham{
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  color: white;
+  
+  border-bottom-color: white;
+  
+}
+.ubicacion{
+  color:white;
+}
+
+.crdimg1{
+  border: none;
+  background-image:url(../imagenes/hilton-garden.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.crdimg2{
+  border: none;
+  background-image:url(../imagenes/wyndham.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.crdimg3{
+  border: none;
+  background-image:url(../imagenes/doubletree.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.crdimg4{
+  border: none;
+  background-image:url(../imagenes/executive-hotel.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.crdimg5{
+  border: none;
+  background-image:url(../imagenes/holiday-inn-panama.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.crdimg6{
+  border: none;
+  background-image:url(../imagenes/courtyard.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.cb1,.cb2,.cb3,.cb4,.cb5,.cb6{
+  background:rgb(0 123 145);
+  opacity:0;
+}
+
+.cb1:hover,.cb2:hover,.cb3:hover,.cb4:hover,.cb5:hover,.cb6:hover{
+  opacity: 1;
+  background: rgb(0 123 145);
+  transition-duration: 1s;
+}
+
+.btn{
+  background-color: rgb(58, 13, 182);
+}
+.card-footer a{
+color: white;
+}
+.card-title,.card-text{
+  color: white;
+}
+
+.img-area{
+  text-align: center;
+  color:#fff;
+  position: relative;
+
+}
+
+.img-area img{
+  width: 100%;
+  height: auto;
+  
+}
+
+.img-text,
+.img-area:after{
+  width: 100%;
+  position: absolute;
+  left:0;
+}
+.img-area:after{
+  content: '';
+  height: 100%;
+  top: 0;
+  transition: .5s;
+
+}
+.img-area:hover:after{
+  background: linear-gradient(to bottom,rgba(199,0,57,.01)0,rgb(51, 42, 51)25%,
+  rgb(49, 44, 49)75%),rgb(27, 23, 27)100%;
+  opacity: 0.8;
+
+}
+
+.img-text{
+  padding: 20px;
+  margin-bottom: 200px;
+  bottom:0;
+  z-index: 1;
+  transform: translateY(-340px);
+  transition : all .6s cubic-bezier(.13,.62,.81,.91)0s;
+  
+}
+
+
+.img-area:hover .img-text{
+  transform: translateY(0);
+}
+
+.img-text a{
+   
+font-size: x-large;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: white;
+}
