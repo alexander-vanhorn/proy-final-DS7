@@ -10,7 +10,8 @@
     $asistencia=0;
     $error=0;
     //consulta es un inner join que consulta la tabla participantes e incripciones en donde el id_inscripcion sea igual al idinscripcion del metodo post
-    $consultaCertificado =$conn->query("SELECT participantes.nombre, participantes.part_id, participantes.apellido, inscripciones.insc_id FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id WHERE inscripciones.insc_id=$id_ins");
+    //$consultaCertificado =$conn->query("SELECT participantes.nombre, participantes.part_id, participantes.apellido, inscripciones.insc_id FROM participantes INNER JOIN inscripciones ON participantes.part_id=inscripciones.part_id WHERE inscripciones.insc_id=$id_ins");
+    $consultaCertificado =$conn->query("SELECT nombre, part_id, apellido FROM participantes WHERE part_id=$id_ins");
     //$consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
     
    
