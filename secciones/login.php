@@ -63,7 +63,7 @@
     <button class="btn btn-lg btn-light btn-block border border-primary" type="submit">Acceder</button>
      
 
-    
+    ¿Aun no tiene cuenta?  <a href="crearUsuario.php" class="ml-2"> Registrese aqui</a>
    
     <p class="mt-5 mb-3 text-muted">&copy;Grupo 3 1LS-132</p>
 
