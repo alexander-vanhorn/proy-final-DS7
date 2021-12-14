@@ -46,16 +46,18 @@ if($result->num_rows>0)
 
    
         ?>
+
+        
             <br>
             <br>
            
-          <div> <img  width="5%" height="auto" src="imagenes/error.png"><h1>Error</h1></div>
+
             <center>
-            
-            ¡Vaya! Parece que has metido una id de inscripción erronea.
+            <div > <img class="img_error" width="5%" height="auto" src="../imagenes/error.png"><h1>Error</h1></div>
+            <h4>¡Vaya! Parece que has metido una id de inscripción erronea.
             <br>
             Cualquier reclamo por favor contactenos a correodeturno@gmail.com
-
+            </h4>
             </center>
 
 
