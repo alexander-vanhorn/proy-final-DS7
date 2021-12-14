@@ -1,5 +1,5 @@
 body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url("ciudad-de-panama.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url("../imagenes/ciudad-de-panama.jpg");
     background-color: #cccccc;
     background-size: cover;
     background-repeat: no-repeat;  
@@ -40,5 +40,6 @@ footer{
 
     padding-left: 25%;
   }
+
 
 
