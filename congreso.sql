@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2021 a las 09:14:22
+-- Tiempo de generación: 14-12-2021 a las 09:20:10
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -106,10 +106,10 @@ INSERT INTO `rol_usuario` (`id_rol`, `nombre_rol`) VALUES
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `apellido` int(20) NOT NULL,
+  `apellido` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` int(50) NOT NULL,
-  `foto` int(10) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `foto` varchar(10) NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
