@@ -6,6 +6,7 @@
         <title>Expositores</title>
     </head>
     <body>
+    <?php include('navbar.html');?>
         <div>
             <br><br>
             <h4 ><center><b>Expositores</b></center></h4>

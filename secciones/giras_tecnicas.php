@@ -6,6 +6,8 @@
         <title>Giras Técnicas</title>
     </head>
     <body>
+
+    <?php include('navbar.html');?>
         <br>
         <br>
         <h4 ><center> <div class=titulo-texto>Giras Técnicas</div></center></h4>

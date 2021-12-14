@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,13 +25,10 @@
 </head>
 
 <body>
-<?php
-    // Código PHP de prueba, no tiene funcionalidad.
-    $x = 5 + 5;
-    echo $x;
-    ?>
 
-    
+<?php include('navbar.html');?>
+
+<br><br>
 
     <div class="encabezado">
         <img class="logo-utp-color" src="..\imagenes\logo_utp_color.png">  
@@ -36,56 +37,53 @@
         <h5>Formulario de inscripción</h5>
         <small>Favor llena la información solicitada a continuación</small>
     </div>
+
     
-    <form class="row g-2">
+    <form action='..\php\procesos_inscripcion.php' method='POST' class="row g-2" >
         <div class="row g-2">
             <div class="col">
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-label="Nombre" id="nombre">
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido">
+                <input type="text" name="apellido" class="form-control" placeholder="Apellido" aria-label="Apellido" id="nombre">
             </div>
         </div>
 
         <div class="col-md-5">
             <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
-        </div>
-
-        <div class="col-md-4">
-            <label for="inputTipoDocmento" class="form-label">Tipo de Documento</label>
-            <select class="form-select" id="specificSizeSelect">
-            <option selected>Escoja una opción...</option>
-            <option value="1">Cédula</option>
-            <option value="2">Pasaporte</option>
-            </select>
+            <input type="email" name="email" class="form-control" id="email">
         </div>
 
         <div class="col-md-3">
-            <label for="inputPassword4" class="form-label">No. de Documento</label>
-            <input type="text" class="form-control" id="inputPassword4">
+            <label for="inputPassword4" class="form-label">Cédula</label>
+            <input type="text" name="cedula" class="form-control" id="cedula">
+        </div>
+
+        <div class="col-md-3">
+            <label for="inputPassword4" class="form-label">ID Participante</label>
+            <input type="text" name="part_ID" class="form-control" id="part_ID">
         </div>
 
         <div class="col-12">
             <label for="inputAddress" class="form-label">Institución</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Ejm. Universidad Tecnológica de Panamá">
+            <input type="text" name="institucion" class="form-control" id="institucion" placeholder="Ejm. Universidad Tecnológica de Panamá">
         </div>
       
         <div class="col-12">
             <label for="inputState" class="form-label">Tipo de participante</label>
-            <select id="inputState" class="form-select">
+            <select name="rol_participante" id="rol_participante" class="form-select">
             <option selected>Escoja una opción</option>
-            <option value="1">Estudinate Pregrado</option>
-            <option value="2">Estudiante Postgrado</option>
-            <option value="3">Profesionales y otros nacionales</option>
-            <option value="4">Estudinates Internacionales Pregrado y Postgrado</option>
-            <option value="5">Profesionales y otros Internacionales</option>
+            <option value="Estudiante pregrado">Estudiante Pregrado</option>
+            <option value="Estudiante postgrado">Estudiante Postgrado</option>
+            <option value="Profesionales nacionales">Profesionales y otros nacionales</option>
+            <option value="Estudiantes internacionales">Estudinates Internacionales Pregrado y Postgrado</option>
+            <option value="Otros internacionales">Profesionales y otros Internacionales</option>
             </select>
         </div>
         
         <div class="col-12">
             <br>
-            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <button type="submit" class="btn btn-primary" href="..\secciones\confirmacion.php">Registrarse</button>
         </div>
     </form>
 

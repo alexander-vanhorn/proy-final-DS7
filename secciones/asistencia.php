@@ -2,23 +2,29 @@
 include("../php/verificar.php");
 include("../php/consultaUser.php");
 
-
 if ($datoUser->id_rol!=1){
     header('Location : panel.php');
 }
-    $consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
-    
-
-    //put all of the resulting names into a PHP array
-    $nombre_array = Array();
-    $id_array = Array();
-    while ($row = $consultaParticipantes->fetch(PDO::FETCH_ASSOC)) {
-        $nombre_array[] =$row['nombre'];
-        $id_array[] =$row['part_id'];
-    }
-    $json_arrayNom = json_encode($nombre_array);
-    $json_arrayId = json_encode($id_array);
 $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido, usuario.email, rol_usuario.nombre_rol FROM usuario INNER JOIN rol_usuario ON usuario.id_rol=rol_usuario.id_rol;"); 
+
+
+
+$asistencia=0;
+    //consulta es un inner join que consulta la tabla participantes e incripciones en donde el id_inscripcion sea igual al idinscripcion del metodo post
+    $consultaAsistencia =$conn->query("SELECT participantes.nombre, participantes.part_id, participantes.apellido, participantes_conferencias.part_id
+    FROM participantes 
+    INNER JOIN participantes_conferencias ON participantes.part_id=participantes_conferencias.part_id 
+    ");
+    $consultaParticipantes = $conn->query("SELECT * FROM participantes");
+    
+    //Se sacan los datos de la bd y se asignan a name para colocarlo en la imagen del certificado
+  
+    
+    while($row=$consultaAsistencia  ->fetch(PDO::FETCH_OBJ)){ 
+     $asistencia++;
+       
+    
+    }
 
 ?>
 
@@ -28,24 +34,13 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
 
 <head>
 
-    <!--JQUERY-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- Los iconos tipo Solid de Fontawesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" href="../css/index.css" th:href="@{/css/index.css}">
-    <title>Registro de Asistencia</title>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <title>Panel de Administracion</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -57,40 +52,6 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <script>
-        window.onload = function() {
-            inicio()
-        };
-        function inicio() {
-            var msg=document.getElementById("error");
-            if(1==<?php echo $_GET['msg'] ?>){
-                msg.innerHTML = "Asistencia registrada exitosamente.";
-                msg.style.display="block";
-            }
-            else if(2==<?php echo $_GET['msg'] ?>){
-                msg.innerHTML = "Rellene todos los campos";
-                msg.style.display="block";
-            }
-            else{
-                msg.style.display="none";
-            }
-        }
-        function comprobarParticipante(){
-            var nomblist = <?php echo $json_arrayNom; ?>, idList =<?php echo $json_arrayId; ?>,
-            nombC = document.formularioC.Nombre.value, idC = document.formularioC.CODI.value, msg=document.getElementById("error");
-            
-            for (let i = 0; i < nomblist.length; i++){
-                if (nombC==nomblist[i] && idC== idList[i]){
-                    msg.style.display="none";
-                    msg.innerHTML = "Datos insertados con exito.";
-                    return true;
-                }
-            }
-            msg.innerHTML = "Error en los datos insertados, verifique los campos.";
-            msg.style.display="block";
-            return false;
-        }
-    </script>
 </head>
 
 <body id="page-top">
@@ -239,7 +200,7 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Registrar Asistencia</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Asistencia</h1>
                         
                     </div>
 
@@ -247,38 +208,43 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Agregar Asistencia</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Lista de Asistencia</h6>
     </div>
     <div class="card-body">
-    <div class="modal-content">
-            <form name="formularioC" class="col-sm-8 main-section" method="GET" action="../php/procesarAsistencia.php" onSubmit="return comprobarParticipante()">
-                <br>
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="COD Inscripcion" name="CODI"/>
-                    </div>
-                    <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre " name="Nombre"/>
-                    </div>
-                    <div class="form-group" id="user-group">
-                        <br>
-                        <?php
-                            $consultaConferencia = $conn->query("SELECT * FROM `conferencias`");
-                            echo '<select class="form-control" id="confList" name="confList">'; // Open your drop down box
-                            echo '<option value="-1">--Selecciones Conferencia--</option>';
-                            while ($row = $consultaConferencia->fetch(PDO::FETCH_ASSOC)) {
-                                echo '<option value="'.$row['conf_id'].'">'.$row['tema'].'</option>';
-                            }
-                            echo '</select>';
-                        ?>
-                    </div>
-                    <div class="form-group" id="user-group">
-                        <p id = "error" name="error"></p>
-                        <input type="hidden" class="form-control" id = "aux" placeholder="aux" name="aux"/>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-lg btn-primary btn-block" onClick="comprobarClave()" ><i class="fas fa-sign-in-alt"></i> Ingresar Asistencia</button>
-                    <br>
-                </form>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Asistencia</th>
+                       
+                    </tr>
+                </thead>
+                <tfoot>
+                </tfoot>
+                <tbody>
+                    <?php while($detalleUsuario=$consultaParticipantes->fetch(PDO::FETCH_OBJ)) { ?>
+                    <tr>
+                    <td><?php echo $detalleUsuario->part_id; ?></td>
+                        <td><?php echo $detalleUsuario->nombre; ?></td>
+                        <td><?php echo $detalleUsuario->apellido; ?></td>
+                        <td><?php echo $detalleUsuario->correo; ?></td>
+                        <td><?php  $asistencia=0; $consultaParticipantes_conf = $conn->query("SELECT * FROM participantes_conferencias WHERE part_id=$detalleUsuario->part_id");
+           
+       
+                while($row=$consultaParticipantes_conf  ->fetch(PDO::FETCH_OBJ)){ 
+               $asistencia++;
+                 
+              
+              } echo $asistencia; ?> </td>
+                     </tr>
+                    <?php } ?> 
+                    
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
