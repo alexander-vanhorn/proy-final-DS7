@@ -12,15 +12,16 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
 
 $asistencia=0;
     //consulta es un inner join que consulta la tabla participantes e incripciones en donde el id_inscripcion sea igual al idinscripcion del metodo post
-    $consultaAsistencia =$conn->query("SELECT participantes.nombre, participantes.part_id, participantes.apellido, inscripciones.insc_id 
+    $consultaAsistencia =$conn->query("SELECT participantes.nombre, participantes.part_id, participantes.apellido, participantes_conferencias.part_id
     FROM participantes 
-    INNER JOIN participantes_conferencias ON participantes.part_id=participantes_conferencias.part_id");
-    //$consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
+    INNER JOIN participantes_conferencias ON participantes.part_id=participantes_conferencias.part_id 
+    ");
+    $consultaParticipantes = $conn->query("SELECT * FROM participantes");
     
     //Se sacan los datos de la bd y se asignan a name para colocarlo en la imagen del certificado
   
     
-    while($row=$consultaParticipantes_conf  ->fetch(PDO::FETCH_OBJ)){ 
+    while($row=$consultaAsistencia  ->fetch(PDO::FETCH_OBJ)){ 
      $asistencia++;
        
     
@@ -199,7 +200,7 @@ $asistencia=0;
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Lista de Usuarios</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Lista de Asistencia</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -211,23 +212,29 @@ $asistencia=0;
                         <th>Apellido</th>
                         <th>Email</th>
                         <th>Rol</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Asistencia</th>
+                       
                     </tr>
                 </thead>
                 <tfoot>
                 </tfoot>
                 <tbody>
-                    <?php while($detalleUsuario=$consultaCertificado->fetch(PDO::FETCH_OBJ)) { ?>
+                    <?php while($detalleUsuario=$consultaParticipantes->fetch(PDO::FETCH_OBJ)) { ?>
                     <tr>
-                    <td><?php echo $detalleUsuario->id; ?></td>
+                    <td><?php echo $detalleUsuario->part_id; ?></td>
                         <td><?php echo $detalleUsuario->nombre; ?></td>
                         <td><?php echo $detalleUsuario->apellido; ?></td>
-                        <td><?php echo $detalleUsuario->email; ?></td>
-                        <td><?php echo $detalleUsuario->nombre_rol; ?> </td>
-                        <td><a class="btn-primary" href="editarUsuario.php?id=<?php echo $detalleUsuario->id;?>">Editar</a></td>
-                        <td><a class="btn-danger" href="../php/eliminar.php?id=<?php echo $detalleUsuario->id;?>">Eliminar</a></td>
-                    </tr>
+                        <td><?php echo $detalleUsuario->correo; ?></td>
+                        <td><?php echo $detalleUsuario->rol; ?> </td>
+                        <td><?php  $asistencia=0; $consultaParticipantes_conf = $conn->query("SELECT * FROM participantes_conferencias WHERE part_id=$detalleUsuario->part_id");
+           
+       
+                while($row=$consultaParticipantes_conf  ->fetch(PDO::FETCH_OBJ)){ 
+               $asistencia++;
+                 
+              
+              } echo $asistencia; ?> </td>
+                     </tr>
                     <?php } ?> 
                     
                 </tbody>
