@@ -48,7 +48,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                     <a class="nav-link" href="#areas-interes">Áreas de interés</a>
                     <a class="nav-link" href="secciones/expositores.php">Expositores</a>
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link">Otros</a>
 
                     &emsp;&emsp;&emsp;&emsp;
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -68,12 +68,6 @@
         <br><br><br>
     </div>
        
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<footer>
-    <br><br>
-    @2021 Universidad Tecnológica de Panamá | All rights reserved | Powered by UTP
-    <br><br><br>
-</footer>   
-
+  
 </body>
 </html>
