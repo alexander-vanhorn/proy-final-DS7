@@ -40,7 +40,7 @@
 
 
   <form class="form-signin" method="POST" action="../php/procesarLogin.php">
-    <img class="mb-4" src="../imagenes/logo_utp.png" alt="" width="100" height="100">
+    <img class="mb-4" src="../images/logo_utp.png" alt="" width="100" height="100">
     <h1 class="h3 mb-3 fw-normal">Acceder al Sistema</h1>
 
     <p class="text-danger"> <?php if (isset($_GET['msg'])) echo $_GET['msg'];?>  </p>
@@ -63,7 +63,7 @@
     <button class="btn btn-lg btn-light btn-block border border-primary" type="submit">Acceder</button>
      
 
-    ¿Aun no tiene cuenta?  <a href="crearUsuario.php" class="ml-2"> Registrese aqui</a>
+    
    
     <p class="mt-5 mb-3 text-muted">&copy;Grupo 3 1LS-132</p>
 
