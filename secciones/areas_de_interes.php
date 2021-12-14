@@ -6,6 +6,7 @@
         <title>Areas de interes</title>
     </head>
     <body>
+    <?php include('navbar.html');?>
         <br>
         <br>
         <h4 ><center> <b>Áreas de Interés</b></center></h4>
