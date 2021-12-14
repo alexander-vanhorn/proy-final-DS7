@@ -76,7 +76,9 @@ include("../php/consultaUser.php");
                     <i class="fas fa-fw fa-table"></i>
                      <span>Lista de Usuarios</span></a>
             </li>
-            <li class="nav-item">
+           
+            <?php }?>
+ <li class="nav-item">
                 <a class="nav-link" href="registroAsistencia.php">
                     <i class="fas fa-fw fa-table"></i>
                      <span>Agregar Asistencia</span></a>
@@ -86,8 +88,6 @@ include("../php/consultaUser.php");
                     <i class="fas fa-fw fa-table"></i>
                      <span>Lista Asistencia</span></a>
             </li>
-            <?php }?>
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="../php/salir.php">

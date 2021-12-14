@@ -3,9 +3,7 @@ include("../php/verificar.php");
 include("../php/consultaUser.php");
 
 
-if ($datoUser->id_rol!=1){
-    header('Location : panel.php');
-}
+
     $consultaParticipantes = $conn->query("SELECT * FROM `participantes`");
     
 
@@ -139,7 +137,9 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
                     <i class="fas fa-fw fa-table"></i>
                     <span>Lista de Usuarios</span></a>
             </li>
-            <li class="nav-item">
+           
+            <?php }?>
+ <li class="nav-item">
                 <a class="nav-link" href="registroAsistencia.php">
                     <i class="fas fa-fw fa-table"></i>
                      <span>Agregar Asistencia</span></a>
@@ -149,8 +149,6 @@ $consultaTodos=$conn->query("SELECT usuario.id, usuario.nombre, usuario.apellido
                     <i class="fas fa-fw fa-table"></i>
                      <span>Lista Asistencia</span></a>
             </li>
-            <?php }?>
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="../php/salir.php">
