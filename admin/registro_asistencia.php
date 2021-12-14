@@ -38,6 +38,10 @@
                 msg.innerHTML = "Asistencia registrada exitosamente.";
                 msg.style.display="block";
             }
+            else if(2==<?php echo $_GET['msg'] ?>){
+                msg.innerHTML = "Rellene todos los campos";
+                msg.style.display="block";
+            }
             else{
                 msg.style.display="none";
             }
@@ -53,7 +57,7 @@
                     return true;
                 }
             }
-            msg.innerHTML = "Error en los datos insertados.";
+            msg.innerHTML = "Error en los datos insertados, verifique los campos.";
             msg.style.display="block";
             return false;
         }
@@ -83,7 +87,7 @@
                         ?>
                     </div>
                     <div class="form-group" id="user-group">
-                        <p id = "error" name="error">asdf</p>
+                        <p id = "error" name="error"></p>
                         <input type="hidden" class="form-control" id = "aux" placeholder="aux" name="aux"/>
                     </div>
                     <br>
