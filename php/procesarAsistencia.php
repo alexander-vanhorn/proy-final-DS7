@@ -11,7 +11,7 @@
 
         if ($error) {
             //echo "All fields are required.";
-            echo '<meta http-equiv="refresh" content="0; url=../admin/registro_asistencia.php?msg=2">';
+            echo '<meta http-equiv="refresh" content="0; url=../secciones/registroAsistencia.php?msg=2">';
         } else {
             $parId = $_REQUEST['CODI'];
             $conId = $_REQUEST['confList'];
@@ -23,7 +23,7 @@
             try{
                 $insercion->execute((array)$datos);
                 //$msg="Asistencia registrada exitosamente.";
-                echo '<meta http-equiv="refresh" content="0; url=../admin/registro_asistencia.php?msg=1">';
+                echo '<meta http-equiv="refresh" content="0; url=../secciones/registroAsistencia.php?msg=1">';
             }catch (PDOexception $e){
                 echo "Error: ".$e->getMessage();
             }

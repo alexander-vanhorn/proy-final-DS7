@@ -9,6 +9,7 @@ include("../config/conexion.php");
  {
 
     $email =$_REQUEST['email'];
+    //$pass = $_REQUEST['password'];
     $pass = md5($_REQUEST['password']);
 
     $consulta=$conn->query("SELECT id FROM usuario WHERE email='$email' and password = '$pass'");
